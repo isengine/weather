@@ -1,6 +1,6 @@
 <?php
 
-namespace is\Masters\Modules\Isengine\Skeleton;
+namespace is\Masters\Modules\Isengine\Weather;
 
 use is\Helpers\System;
 use is\Helpers\Objects;

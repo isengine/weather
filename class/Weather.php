@@ -65,7 +65,7 @@ $jsonstr = [
 */
 // end of primer
 
-$jsonstr['forecast'] = System::set($jsonstr['forecast']['list'], true);
+$jsonstr['forecast'] = System::set($jsonstr['forecast']['list']) ? $jsonstr['forecast']['list'] : null;
 
 //print_r($jsonstr);
 
@@ -155,7 +155,7 @@ foreach (['morning', 'day', 'night'] as $key) {
 	foreach ($data['daily'] as &$item) {
 		$item[$key]['temperature'] = System::set($item[$key]['temperature']) ? round(array_sum($item[$key]['temperature']) / count($item[$key]['temperature'])) : null;
 		$item[$key]['feels'] = System::set($item[$key]['feels']) ? round(array_sum($item[$key]['feels']) / count($item[$key]['feels'])) : null;
-		$item[$key]['description'] = Strings::join(System::set($item[$key]['description']) ? Objects::clear($item[$key]['description'], ['unique' => true]) : $item[$key]['description'], ', ');
+		$item[$key]['description'] = Strings::join(System::set($item[$key]['description']) ? Objects::clear($item[$key]['description'], true) : $item[$key]['description'], ', ');
 		if (System::set($item[$key]['code'])) {
 			$item[$key]['code'] = array_flip(array_count_values($item[$key]['code']));
 			krsort($item[$key]['code']);
@@ -174,7 +174,7 @@ foreach (['morning', 'day', 'night'] as $key) {
 	$item[$key]['temperature'] = System::set($item[$key]['temperature']) ? round(array_sum($item[$key]['temperature']) / count($item[$key]['temperature'])) : null;
 	$item[$key]['feels'] = System::set($item[$key]['feels']) ? round(array_sum($item[$key]['feels']) / count($item[$key]['feels'])) : null;
 	
-	$item[$key]['description'] = Strings::join(System::set($item[$key]['description']) ? Objects::clear($item[$key]['description'], ['unique' => true]) : $item[$key]['description'], ', ');
+	$item[$key]['description'] = Strings::join(System::set($item[$key]['description']) ? Objects::clear($item[$key]['description'], true) : $item[$key]['description'], ', ');
 	if (System::set($item[$key]['code'])) {
 		$item[$key]['code'] = array_flip(array_count_values($item[$key]['code']));
 		krsort($item[$key]['code']);

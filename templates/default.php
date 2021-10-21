@@ -12,10 +12,10 @@ use is\Masters\View;
 
 $view = View::getInstance();
 
-$instance = $object -> get('instance');
-$sets = &$object -> settings;
+$instance = $this -> get('instance');
+$sets = &$this -> settings;
 
-$data = $object -> getData();
+$data = $this -> getData();
 
 ?>
 
@@ -61,7 +61,7 @@ $data = $object -> getData();
 	?>
 </ul>
 
-<?php if (!empty($object -> settings['copyright'])) : ?>
+<?php if (!empty($this -> settings['copyright'])) : ?>
 <small class="main-side__block-item-weather-c">
 	По данным <a href="http://openweathermap.com/" title="Open Weather Map" target="_blank">Open Weather Map</a>
 </small>
